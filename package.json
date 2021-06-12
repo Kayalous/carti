@@ -7,6 +7,7 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
+        "build": "npm run production",
         "production": "mix --production"
     },
     "devDependencies": {
@@ -32,6 +33,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "vue-moment": "^4.1.0"
+        "hamburgers": "^1.1.3",
+        "vue-moment": "^4.1.0",
+        "vue-tasty-burgers": "^1.2.3"
     }
 }
