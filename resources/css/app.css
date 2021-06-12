@@ -1,0 +1,24 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.underlined {
+    position: relative !important;
+}
+
+.underlined:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -2.5%;
+    width: 105%;
+    height: 33%;
+    border-radius: 10px;
+    background: #99f6e4;
+    transform: skewX(-10deg) rotate(-2deg);
+}
+
+.underlined.alt:after {
+    transform: skewX(10deg) rotate(1deg);
+}
