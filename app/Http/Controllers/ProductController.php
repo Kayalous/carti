@@ -136,9 +136,14 @@ class ProductController extends Controller
 
     }
 
-    public function productFromBarcode(Request $request){
-        return response()->json([
-            'product' => Product::where('barcode', $request->barcode)->first(),
-        ]);
+    public function productFromBarcode(Request $request)
+    {
+        $product = Product::where('barcode', $request->barcode)->first();
+        if ($product)
+            return response()->json([
+                'product' => $product,
+            ]);
+        else
+            return response('Product not found', 404);
     }
 }

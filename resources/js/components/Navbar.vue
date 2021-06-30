@@ -14,6 +14,12 @@
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:flex sm:items-center">
                         <jet-nav-link
+                            :href="route('products.all')"
+                            :active="route().current('products.all')"
+                        >
+                            Browse Products
+                        </jet-nav-link>
+                        <jet-nav-link
                             v-if="$page.props.user"
                             :href="route('user.cart')"
                             :active="route().current('user.cart')"
@@ -28,9 +34,6 @@
                                         stroke-linejoin="round"/>
                                 </svg>
                             </div>
-
-
-
                         </jet-nav-link>
                     </div>
                 </div>

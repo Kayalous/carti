@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function all(){
+    public function all()
+    {
 
         return response()->json([
             'categories' => Category::all(),
@@ -15,11 +16,17 @@ class CategoryController extends Controller
 
     }
 
-    public function categoryProducts(Request $request){
 
-        return response()->json([
-            'products' => Category::find($request->category_id)->products,
-        ]);
+    public function categoryProducts(Request $request)
+    {
+
+        $category = Category::find($request->category_id);
+        if ($category)
+            return response()->json([
+                'products' => $category->products,
+            ]);
+        else
+            return response('Category not found', 404);
 
     }
 }
