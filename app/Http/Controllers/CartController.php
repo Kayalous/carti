@@ -6,44 +6,46 @@ use App\Models\Cart;
 use App\Models\Product;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class CartController extends Controller
 {
+
+    public function show(Request $request)
+    {
+        return Inertia::render('UserCart', [
+            'items' => Cart::getFormattedProducts(Auth::user()->carts),
+            'total' => Cart::getAllCartsTotal(Auth::user()->carts)
+        ]);
+    }
+
     public function addProductToCart(Request $request)
     {
-        $cart = Cart::findOrFail($cart_id);
 
-        $product = Product::findOrFail($product_id);
+        $product = $request->user()->carts[0]->add($request->product_id, $request->qty);
+        if ($product)
+            $msg = 'Added ' . $product->name . ', currently ' . $product->pivot->qty . ' in cart.';
+        else
+            $msg = 'Added to cart.';
 
-        $cart->add($product);
+        return back(303)->with('success', $msg);
 
-        dd($cart->products->toJson());
     }
 
     public function removeProductFromCart(Request $request)
     {
-        $cart = Cart::findOrFail($cart_id);
 
-        $product = Product::findOrFail($product_id);
+        $product = $request->user()->carts[0]->remove($request->product_id, $request->qty);
 
-        $cart->remove($product);
+        if ($product)
+            $msg = 'Removed ' . $product->name . ' from cart, currently ' . $product->pivot->qty . ' pcs in cart.';
+        else
+            $msg = 'Removed product from cart.';
 
-        dd($cart->products->toJson());
+        return back(303)->with('success', $msg);
+
     }
 
-    public function getSummary(Request $request)
-    {
-        $user = $request->user();
-
-        $carts = $user->carts;
-
-        return Cart::getFormattedProducts($carts)
-    }
-
-    public function total(Request $request)
-    {
-        $cart = Cart::find($cart_id);
-        dd(collect(['subtotal' => $cart->products->sum('price')])->toJson());
-    }
 
 }

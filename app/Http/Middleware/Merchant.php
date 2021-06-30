@@ -17,11 +17,10 @@ class Merchant
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->can('add products'))
+        if (Auth::user()->hasRole('merchant'))
             return $next($request);
 
-        request()->session()->flash('flash.banner', "You don't have permission to add items.");
-        request()->session()->flash('flash.bannerStyle', 'danger');
-        return back();
+
+        return back()->with('error', "You don't have permission to do that.");
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <button :type="type" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150">
+    <button :type="type" class="inline-flex border border-transparent items-center px-4 py-2 bg-teal-500 rounded-md font-semibold text-xs text-white uppercase tracking-widest shadow-sm hover:bg-teal-600 focus:outline-none focus:border-teal-300 focus:shadow-outline-teal active:bg-gray-50 transition ease-in-out duration-150">
         <slot></slot>
     </button>
 </template>

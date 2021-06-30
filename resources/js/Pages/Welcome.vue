@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <Hero />
-    <how-it-works />
+    <HowItWorks />
     <Features />
     <CTA />
   </AppLayout>
@@ -25,4 +25,3 @@ export default {
   },
 };
 </script>
-    HowItWorks

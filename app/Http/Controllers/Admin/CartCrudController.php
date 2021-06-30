@@ -79,30 +79,34 @@ class CartCrudController extends CrudController
 //            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
 //        ]);
 
-//        $this->crud->addField(
-//            [   // repeatable
-//                'name' => 'products',
-//                'entity' => 'products',
-//                'label' => 'Products',
-//                'type' => 'repeatable',
-//                'fields' => [
-//                    [
-//                        'name' => 'name',
-//                        'type' => 'text',
-//                        'label' => 'Name',
-//                        'wrapper' => ['class' => 'form-group col-md-4 readonly'],
-//                    ],
+        $this->crud->addField(
+            [   // repeatable
+                'name' => 'products',
+                'label' => 'Products',
+                'type' => 'repeatable',
+                'fields' => [
+                    [
+                        'label' => "Product Name",
+                        'type' => 'select2',
+                        'name' => 'name',
+                        'pivot' => true,
+
+                        'entity' => 'products',
+
+                        'wrapper' => ['class' => 'form-group col-md-4'],
+                    ],
 //                    [
 //                        'name' => "pivot->qty",
-//                        'type' => 'text',
+//                        'type' => 'number',
+//                        'default' => 1,
 //                        'label' => 'Quantity',
 //                        'wrapper' => ['class' => 'form-group col-md-4'],
 //                    ],
-//                ],
-//                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
-//
-//            ],
-//        );
+                ],
+                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+
+            ],
+        );
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

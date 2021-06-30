@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class="fixed w-full top-0 mt-16 z-50"
+        <transition name="fade-in-down" enter>
+            <div class="fixed max-w-3xl rounded-md overflow-hidden w-full top-3 mt-16 z-50 left-1/2 transform -translate-x-1/2"
              :class="{ 'bg-green-400': style == 'success', 'bg-red-700': style == 'danger' }" v-if="show && message">
             <div class="max-w-screen-xl mx-auto py-2 px-3 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between flex-wrap">
@@ -42,6 +43,7 @@
                 </div>
             </div>
         </div>
+        </transition>
     </div>
 </template>
 
@@ -64,3 +66,24 @@ export default {
     }
 }
 </script>
+
+<style>
+.fade-in-down-leave-active {
+    @apply transition duration-500;
+}
+
+.fade-in-down-enter-active {
+    @apply transition duration-500;
+}
+
+.fade-in-down-enter {
+    @apply opacity-0 -translate-y-full;
+}
+.fade-in-down-enter-to {
+    @apply opacity-100 translate-y-[-50%];
+}
+
+.fade-in-down-leave-to {
+    @apply opacity-0 -translate-y-full;
+}
+</style>

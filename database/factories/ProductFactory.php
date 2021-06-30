@@ -23,10 +23,12 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'image' => '/images/product-' . $this->faker->numberBetween(1, 5) . '.jpg',
             'description' => $this->faker->paragraph,
-            'qty' => $this->faker->numberBetween(1,999),
-            'weight' => $this->faker->randomFloat(2,1,10),
-            'price' => $this->faker->randomFloat(2,1,1000),
+            'qty' => $this->faker->numberBetween(1, 999),
+            'weight' => $this->faker->randomFloat(2, 1, 10),
+            'price' => $this->faker->randomFloat(2, 1, 1000),
+            'merchant_id' => 2
         ];
     }
 }
