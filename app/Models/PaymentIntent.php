@@ -42,8 +42,7 @@ class PaymentIntent extends Model
         Cart::zeroCarts($user->carts);
 
         //De-sync all carts from user
-        $user->carts()->sync([]);
-
-
+        //Not sure if I should do this or not
+//        $user->carts()->sync([]);
     }
 }
