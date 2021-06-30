@@ -31,8 +31,9 @@ Route::get('/', function () {
 })->name('landing');
 
 Route::get('test', function () {
-    $category = Category::all()->random();
-    dd($category, $category->products);
+    $cart = Cart::create([]);
+//    $category = Category::all()->random();
+    dd($cart);
 });
 
 Route::get('products', [ProductController::class, 'showAllProducts'])->name('products.all');
