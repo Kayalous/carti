@@ -33,6 +33,53 @@ class CartController extends Controller
 
     }
 
+    public function apiAddProductToCartWithBarcode(Request $request)
+    {
+
+            $product = Product::where('barcode', $request->barcode)->first();
+            if ($product){
+
+                $request->user()->carts[0]->add($product->id, $request->qty);
+
+                return response()->json([
+                    'items' => Cart::getFormattedProducts($request->user()->carts),
+                    'total' => Cart::getAllCartsTotal($request->user()->carts)
+                ]);
+
+            }
+            else
+                return response('Product not found', 404);
+    }
+
+    public function apiRemoveProductFromCartWithBarcode(Request $request)
+    {
+
+        $product = Product::where('barcode', $request->barcode)->first();
+
+        if ($product){
+
+            $request->user()->carts[0]->remove($product->id, $request->qty);
+
+            return response()->json([
+                'items' => Cart::getFormattedProducts($request->user()->carts),
+                'total' => Cart::getAllCartsTotal($request->user()->carts)
+            ]);
+
+        }
+        else
+            return response('Product not found', 404);
+    }
+
+    public function apiGetSummary(Request $request){
+
+        return response()->json([
+            'items' => Cart::getFormattedProducts($request->user()->carts),
+            'total' => Cart::getAllCartsTotal($request->user()->carts)
+        ]);
+
+    }
+
+
     public function removeProductFromCart(Request $request)
     {
 

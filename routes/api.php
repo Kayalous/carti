@@ -27,13 +27,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->name('api.cart.')->prefix('cart')->group(function () {
 
-    Route::post('summary', [CartController::class, 'getSummary'])->name('summary');
+    Route::post('summary', [CartController::class, 'apiGetSummary'])->name('summary');
 
-    Route::post('update', [CartController::class, 'updateCart'])->name('update');
+    Route::post('update', [CartController::class, 'apiUpdateCart'])->name('update');
 
-    Route::post('add-product', [CartController::class, 'apiAddProductToCart'])->name('add');
+    Route::post('product/add/barcode', [CartController::class, 'apiAddProductToCartWithBarcode'])->name('add');
 
-    Route::post('remove-product', [CartController::class, 'apiRemoveProductFromCart'])->name('remove');
+    Route::post('product/remove/barcode', [CartController::class, 'apiRemoveProductFromCartWithBarcode'])->name('remove');
 
 });
 

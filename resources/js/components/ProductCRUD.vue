@@ -2,8 +2,16 @@
     <div
         class="sm:max-w-xl w-full flex-grow mx-auto p-5 shadow rounded-md overflow-hidden lg:max-w-5xl bg-white flex flex-col">
 
-        <template v-if="">
+        <template>
 
+            <div class="flex items-center justify-start mb-5">
+                <inertia-link
+                    href="/merchant/inventory"
+                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-600 transition duration-200 rounded hover:text-purple-700 focus:shadow-outline focus:outline-none">
+                    < Back to Inventory
+                </inertia-link
+                >
+            </div>
             <h1
                 class="max-w-lg  mx-auto mb-6 text-3xl font-extrabold tracking-tighter text-center text-cool-gray-700 sm:text-4xl sm:leading-none"
             >
@@ -22,8 +30,8 @@
                 </button>
 
                 <button type="button" class="mt-2 block" v-show="photoPreview" @click.prevent="selectNewPhoto">
-                        <span class="block rounded-md h-[250px] w-screen max-w-md sm:max-w-lg"
-                              :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
+                        <span class="block rounded-md h-[250px] w-screen max-w-md sm:max-w-lg transition duration-200 ease-in-out hover:brightness-105"
+                              :style="'background-size: contain; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
                         </span>
                 </button>
 
@@ -48,6 +56,10 @@
                           class="border-gray-300 mt-1 resize-none w-full focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50 rounded-md shadow-sm"
                           v-model="form.description"></textarea>
                 <jet-input-error :message="form.errors.description" class="mt-2"/>
+
+                <jet-label class="mt-3" for="barcode" value="Barcode"/>
+                <jet-input id="barcode" type="number" class="mt-1 block w-full" min="1" v-model="form.barcode" placeholder="60045007406"/>
+                <jet-input-error :message="form.errors.barcode" class="mt-2"/>
 
                 <jet-label class="mt-3" for="qty" value="Quantity"/>
                 <jet-input id="qty" type="number" class="mt-1 block w-full" min="1" v-model="form.qty" placeholder="1"/>

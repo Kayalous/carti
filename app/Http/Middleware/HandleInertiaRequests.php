@@ -41,6 +41,9 @@ class HandleInertiaRequests extends Middleware
             'auth.user.isMerchant' => fn() => $request->user()
                 ? $request->user()->hasRole('merchant')
                 : null,
+            'auth.user.isAdmin' => fn() => $request->user()
+                ? $request->user()->hasRole('super-admin')
+                : null,
 
         ]);
     }

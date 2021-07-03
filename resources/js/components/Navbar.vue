@@ -14,6 +14,12 @@
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:flex sm:items-center">
                         <jet-nav-link
+                            v-if="isAdmin"
+                            href="/dashboard"
+                        >
+                            Admin Dashboard
+                        </jet-nav-link>
+                        <jet-nav-link
                             :href="route('products.all')"
                             :active="route().current('products.all')"
                         >
@@ -82,9 +88,11 @@
                                 <template v-if="isMerchant">
                                     <!-- Account Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        Manage Inventory
+                                        Merchant Quick Actions
                                     </div>
-
+                                    <jet-dropdown-link  :href="route('merchant.inventory.show')">
+                                        Manage Inventory
+                                    </jet-dropdown-link>
                                     <jet-dropdown-link class="border-b border-gray-100" :href="route('merchant.product.new')">
                                         Add Product
                                     </jet-dropdown-link>
@@ -178,7 +186,29 @@
 
                 <!-- Responsive Settings Options -->
                 <div class="pt-4 pb-1 border-t border-gray-200">
+                    <div v-if="isAdmin" class="space-y-1">
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            Admin Quick Actions
+                        </div>
+                        <jet-responsive-nav-link href="/dashboard" :active="route().current('dashboard')">
+                            Admin Dashboard
+                        </jet-responsive-nav-link>
+                    </div>
+                    <div v-if="isMerchant" class="space-y-1">
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            Merchant Quick Actions
+                        </div>
+                        <jet-responsive-nav-link :href="route('merchant.inventory.show')" :active="route().current('merchant.inventory.show')">
+                            Manage Inventory
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link :href="route('merchant.product.new')" :active="route().current('merchant.product.new')">
+                            Add Product
+                        </jet-responsive-nav-link>
+                    </div>
                     <div v-if="$page.props.user" class="space-y-1">
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            Manage Account
+                        </div>
                         <jet-responsive-nav-link
                             :href="route('user.cart')"
                             :active="route().current('user.cart')"
@@ -270,6 +300,9 @@ export default {
     computed: {
         isMerchant() {
             return this.$page.props.auth.user.isMerchant
+        },
+        isAdmin() {
+            return this.$page.props.auth.user.isAdmin
         }
     }
 };

@@ -1,24 +1,25 @@
 <template>
     <div class="h-full flex-grow flex flex-col justify-center px-2 w-full pb-4">
-
         <div
-            class="sm:max-w-xl w-full flex-grow mx-auto shadow rounded-md overflow-hidden lg:max-w-5xl bg-white flex flex-col py-5">
-            <div v-if="items.length > 0" class="flex flex-grow flex-col w-full">
-                <div class="w-full p-5 flex-grow">
+            class="sm:max-w-xl w-full flex-grow mx-auto shadow rounded-md overflow-hidden lg:max-w-5xl bg-white flex flex-col pt-5">
+            <div v-if="items.length > 0" class="flex flex-grow flex-col w-full ">
+                <div class="w-full p-2 sm:p-5 flex-grow">
                     <h1 class="text-xl">Shopping Cart</h1>
-                    <div class="grid grid-cols-6 mt-6  mb-3">
+                    <div class="grid grid-cols-6 mt-6 mb-3">
                         <p class="text-xs sm:text-base text-base col-span-3">Item</p>
                         <p class="text-xs sm:text-base text-base ">Quantity</p>
                         <p class="text-xs sm:text-base text-base  whitespace-nowrap">Unit price</p>
                         <p class="text-xs sm:text-base text-base ">Total</p>
                     </div>
-                    <div v-for="item in items" :key="item.id" class="grid grid-cols-6 border-t py-3">
+                    <div v-for="item in items" :key="item.id" class="grid grid-cols-6 border-t py-2 sm:px-2 transition duration-200 ease-in-out rounded-md sm:hover:bg-gray-50">
                         <div class="flex items-center col-span-3">
                             <img :src="item.image"
-                                 class="rounded-full w-12">
+                                 class="rounded-full w-12 h-12 object-contain border border-gray-200">
                             <div class="flex flex-col ml-3">
-                                <p class="text-xs sm:text-base text-gray-700">{{ item.name }}</p>
-                                <p class="text-xs font-light text-gray-400">#{{ item.id }}</p>
+                                <inertia-link :href="`/products/${item.id}`"
+                                              class="text-xs sm:text-base text-gray-700 dark:text-white">{{ item.name }}</inertia-link>
+
+                                <p class="text-xs font-light text-gray-400">#{{ item.barcode }}</p>
                             </div>
                         </div>
                         <p class="text-xs sm:text-base text-gray-700">{{ item.qty }}</p>
@@ -29,7 +30,7 @@
                 <div class="bg-gray-50 w-full p-5 flex flex-col items-end justify-end">
 
                     <div class="grid grid-cols-6 w-full text-lg">
-                        <div class="col-span-5 flex items-center pl-12">
+                        <div class="col-span-4 sm:col-span-5 flex items-center pl-12">
 
                             <p class="ml-3">Grand Total</p>
                         </div>
@@ -64,8 +65,6 @@
                         Home
                     </a>
                 </div>
-
-
             </div>
         </div>
     </div>

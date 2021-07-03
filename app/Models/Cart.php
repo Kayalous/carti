@@ -62,7 +62,7 @@ class Cart extends Model
 
         if ($carted?->pivot?->qty > 1 && $carted?->pivot?->qty > $qty) {
             $carted->pivot->qty -= $qty;
-            $carted->save();
+            $this->products()->updateExistingPivot($product_id, ['qty' => $carted->pivot->qty]);
         } else
             $this->products()->detach($product_id);
 
@@ -72,7 +72,9 @@ class Cart extends Model
 
     public function total()
     {
-        return $this->products()->sum('price');
+        return $this->products->sum(function($item){
+            return $item->price * $item->pivot->qty;
+        });
     }
 
     public static function getAllCartsTotal($carts)

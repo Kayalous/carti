@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ApiTokensController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Models\Cart;
@@ -31,12 +32,14 @@ Route::get('/', function () {
 })->name('landing');
 
 Route::get('test', function () {
-    $cart = Cart::create([]);
-//    $category = Category::all()->random();
-    dd($cart);
+    return Inertia::render('Product', [
+        'product' => \App\Models\Product::all()->random()
+    ]);
 });
 
 Route::get('products', [ProductController::class, 'showAllProducts'])->name('products.all');
+
+Route::get('products/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
@@ -55,6 +58,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     //Merchant routes
     Route::prefix('merchant')->name('merchant.')->middleware(['merchant'])->group(function () {
+
+        Route::get('inventory', [MerchantController::class, 'show'])->name('inventory.show');
 
         Route::get('product/new', [ProductController::class, 'showCreate'])->name('product.new');
 

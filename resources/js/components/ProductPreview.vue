@@ -1,32 +1,19 @@
 <template>
-    <div
-        class="w-full overflow-hidden bg-white group rounded-lg shadow-md border border-gray-200 dark:bg-gray-800 flex flex-col items-center justify-between">
-        <div class="px-4 py-2 w-full">
-            <h3 class="text-xs font-medium text-teal-600 uppercase dark:text-teal-400">Product</h3>
-            <inertia-link :href="`/products/${product.id}`"
-                          class="text-3xl font-bold text-gray-800 uppercase dark:text-white font-sans">{{
-                    product.name
-                }}
-            </inertia-link>
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ product.description }}
-            </p>
-            <p class="mt-1 text-xs text-gray-400">
-                In stock: {{ product.qty }}
-            </p>
-        </div>
 
-        <div class="w-full">
-
-            <inertia-link :href="`/products/${product.id}`">
-                <img class="object-contain w-full h-48 mt-2 py-4"
-                     :src="product.image"
-                     :alt="product.name" />
-            </inertia-link>
-            <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
-                <h1 class="text-lg font-bold text-white">{{ product.price.toFixed(2) }} EGP</h1>
+    <div class="mx-auto flex flex-wrap max-w-6xl w-full flex-grow p-5 shadow rounded-md bg-white">
+        <img :alt="product.name" class="lg:w-1/2 w-full h-64 sm:h-auto object-contain rounded "
+             :src="product.image">
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex flex-grow flex-col justify-between">
+            <div>
+                <h2 class="text-sm title-font text-gray-500 tracking-widest text-teal-500">PRODUCT</h2>
+                <h1 class="text-blue-gray-900 text-3xl title-font font-medium mb-5">{{ product.name }}</h1>
+                <p class="leading-relaxed">{{ product.description }}</p>
+                <p class="text-gray-400 mt-2">In stock: {{ product.qty }}</p>
+            </div>
+            <div class="flex justify-between">
+                <span class="title-font font-medium text-2xl text-blue-gray-700">{{ product.price }} EGP</span>
                 <div
-                    class="flex flex-nowrap gap-x-5 items-center justify-center opacity-100 md:opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition duration-200 ease-in-out">
+                    class="flex flex-nowrap gap-x-5 items-center justify-center transition duration-200 ease-in-out">
                     <div
                         title="Quantity"
                         class="flex flex-nowrap items-center justify-center w-24 h-8 shadow transition duration-200 ease-in-out">
@@ -64,12 +51,12 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
 export default {
     props: ['product'],
-    name: "ProductCard",
     data() {
         return {
             form: this.$inertia.form({
@@ -94,7 +81,6 @@ export default {
                 onError: (msg) => {
 
                     this.showAlert('error', 'Check the data you entered for errors.')
-                    console.log(msg)
 
                 },
                 preserveScroll: true,
@@ -111,6 +97,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

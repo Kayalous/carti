@@ -25,6 +25,7 @@ export default {
                 image: null,
                 description: '',
                 qty: 1,
+                barcode: null,
                 weight: 0.0,
                 price: 0,
             }
