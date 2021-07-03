@@ -32,7 +32,7 @@ class ProductController extends Controller
             $products = Product::whereIn('id', $ids)->orderBy('price', $filters->orderBy)->where('price', '>=', $filters->min)->where('price', '<', ($filters->max + 1))->paginate(12);
 
         } else
-            $products = Product::orderBy('price', $filters->orderBy)->where('price', '>=', $filters->min)->where('price', '<', $filters->max)->paginate(12);
+            $products = Product::orderBy('price', $filters->orderBy)->where('price', '>=', $filters->min)->where('price', '<', ($filters->max + 1))->paginate(12);
 
 
         if ($request->require_json)
