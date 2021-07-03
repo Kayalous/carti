@@ -42,7 +42,7 @@
                         <jet-label class="mt-3" value="Price Range: "/>
                         <vue-slider class="w-full" tooltip-dir="bottom" v-model="range" lazy
                                     :min="Math.floor(minPrice)"
-                                    :max="Math.ceil(maxPrice)" :tooltip-merge="true"
+                                    :max="Math.ceil(maxPrice) + 1" :tooltip-merge="true"
                                     :enable-cross="false"/>
 
                         <jet-label class="mt-3 mb-2" value="Sort by: "/>
@@ -177,8 +177,8 @@ export default {
                 params: {
                     'q': vm.q,
                     'orderBy': vm.sort.price,
-                    'min': vm.range[0],
-                    'max': vm.range[1],
+                    'min': (vm.range[0] - 1),
+                    'max': (vm.range[1] + 1),
                     'page': 1,
                     'require_json': true
                 },
@@ -188,7 +188,6 @@ export default {
             })
                 .then((response) => {
                     vm.products = response.data.items
-                    console.log(response)
                 }).catch((res) => {
 
             })
