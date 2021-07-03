@@ -77,7 +77,7 @@ class ProductController extends Controller
 
             $path = '/' . $request->file('image')->store('public/images');
 
-            $path = '/images/' . explode('/', $path)[3];
+            $path = '/storage/images/' . explode('/', $path)[3];
 
 
         } else {
@@ -116,7 +116,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
 
             $path = '/' . $request->file('image')->store('public/images');
-            $path = '/images/' . explode('/', $path)[3];
+            $path = '/storage/images/' . explode('/', $path)[3];
 
             $newProduct['image'] = $path;
         }
