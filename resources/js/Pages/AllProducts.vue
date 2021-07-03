@@ -177,8 +177,8 @@ export default {
                 params: {
                     'q': vm.q,
                     'orderBy': vm.sort.price,
-                    'min': (vm.range[0] - 1),
-                    'max': (vm.range[1] + 1),
+                    'min': (vm.range[0]),
+                    'max': (vm.range[1]),
                     'page': 1,
                     'require_json': true
                 },

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56fdd77f-4863-4338-b6af-7ee1fe4e0507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Pagination.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Pagination.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/AllProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/AllProducts.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +227,7 @@
       <workItem from="1624993024525" duration="16752000" />
       <workItem from="1625046090675" duration="36425000" />
       <workItem from="1625084069513" duration="3297000" />
-      <workItem from="1625312256910" duration="15470000" />
+      <workItem from="1625312256910" duration="16125000" />
     </task>
     <servers />
   </component>
