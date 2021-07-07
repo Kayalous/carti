@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use DGvai\Review\Reviewable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -12,6 +13,7 @@ class Product extends Model
     protected $guarded = [];
     use HasFactory, CrudTrait;
     use Searchable;
+    use Reviewable;
 
 
     public function merchant()

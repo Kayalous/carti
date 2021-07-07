@@ -1,7 +1,9 @@
 <?php
 
+use App\Events\CashierCheckoutEvent;
 use App\Http\Controllers\Api\ApiTokensController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CashierController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\PaymentController;
@@ -9,9 +11,11 @@ use App\Http\Controllers\ProductController;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\PaymentIntent;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,18 +35,22 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('landing');
 
-Route::get('test', function () {
-    return Inertia::render('Product', [
-        'product' => \App\Models\Product::all()->random()
-    ]);
-});
-
 Route::get('products', [ProductController::class, 'showAllProducts'])->name('products.all');
 
 Route::get('products/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
+
+    Route::middleware('cashier')->get('cashier', function (Request $request) {
+
+        \QrCode::size(500)
+            ->format('png')
+            ->generate($request->user()->id, public_path('images/cashierQR-' . $request->user()->id . '.png'));
+
+        return Inertia::render('Cashier');
+
+    });
 
     Route::get('user/cart', [CartController::class, 'show'])->name('user.cart');
 
@@ -81,4 +89,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('remove-product', [CartController::class, 'removeProductFromCart'])->name('remove');
 
     });
+});
+
+
+Route::middleware(['auth:sanctum', 'cashier'])->name('cashier.')->prefix('cashier')->group(function () {
+
+    Route::post('summary', [CashierController::class, 'getSummary'])->name('summary');
+
+    Route::post('checkout', [CashierController::class, 'checkoutCustomer'])->name('checkout');
+
+
 });

@@ -36,7 +36,12 @@ class User extends Authenticatable
 
     public function purchases()
     {
-        return $this->belongsToMany(Product::class, 'purchases')->withPivot(['qty', 'price'])->withTimestamps();
+        return $this->belongsToMany(Product::class, 'purchases')->withPivot(['qty', 'price', 'payment_method', 'cashier_id', 'transaction_id'])->withTimestamps();
+    }
+
+    public function cashierSales()
+    {
+        return $this->belongsToMany(Product::class, 'purchases', 'cashier_id')->withPivot(['qty', 'price', 'payment_method', 'cashier_id', 'transaction_id'])->withTimestamps();
     }
 
     public function inventory()
@@ -73,6 +78,44 @@ class User extends Authenticatable
                 '91F2E1', // background color
                 '14b8a6', // font color
             ]);
+    }
+
+    //Product to update attach record, data from multiple carts.
+    private function getProductsForAttach($carts, $method, $cashier_id, $uuid)
+    {
+        $items = [];
+
+        foreach ($carts as $cart) {
+            foreach ($cart->products as $product) {
+                $items[$product->id] =
+                    [
+                        'qty' => $product->pivot->qty,
+                        'price' => $product->price,
+                        'payment_method' => $method,
+                        'cashier_id' => $cashier_id,
+                        'transaction_id' => $uuid
+                    ];
+            }
+        }
+
+        return $items;
+    }
+
+
+    public function completePurchase($method = 'stripe', $cashier_id = null)
+    {
+
+        $uuid = \Illuminate\Support\Str::uuid();
+
+        //Add items to user's purchase history
+        $this->purchases()->attach($this->getProductsForAttach($this->carts, $method, $cashier_id, $uuid));
+
+        //Zero user's carts
+        Cart::zeroCarts($this->carts);
+
+        //De-sync all carts from user
+        //Not sure if I should do this or not
+//        $user->carts()->sync([]);
     }
 
 

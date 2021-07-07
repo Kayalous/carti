@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\Permission\Models\Permission;
@@ -39,6 +40,13 @@ class DatabaseSeeder extends Seeder
             'delete product'
         ]);
 
+        //Cashier Roles and permissions
+        $cashier = Role::create(['name' => 'cashier']);
+        Permission::create(['name' => 'checkout others']);
+        $cashier->givePermissionTo([
+            'checkout others'
+        ]);
+
         //Sample admin account
         User::create(['name' => 'Abdu',
             'email' => 'aelkayal88@gmail.com',
@@ -51,14 +59,29 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$4AZXlxUgDHqC3Tz/KMXHmehOrBIeAAAPqlVEFTS3wD/jNVV/uLTd2' //123456789
         ])->assignRole('merchant');
 
+        //Sample cashier account
+        User::create(['name' => 'Abdu',
+            'email' => 'aelkayal99@gmail.com',
+            'password' => '$2y$10$4AZXlxUgDHqC3Tz/KMXHmehOrBIeAAAPqlVEFTS3wD/jNVV/uLTd2' //123456789
+        ])->assignRole('cashier');
+
         //Sample categories, products, and carts
         Category::factory(10)->create();
         Product::factory(50)->create()->each(function ($product) {
 
             $category = rand(1, 10);
+
             $product->categories()->attach($category);
 
+            $user = User::first();
+
+            $faker = Factory::create();
+
+            $product->makeReview($user, $faker->numberBetween(1, 5), $faker->paragraph);
+
         });
+
+
         Cart::factory(3)->create()->each(function ($cart) {
             for ($i = 1; $i <= 10; $i++)
                 $cart->products()->attach($i);
@@ -87,7 +110,6 @@ class DatabaseSeeder extends Seeder
             'price' => 50,
             'merchant_id' => 2
         ]);
-
 
 
         //Sample user account

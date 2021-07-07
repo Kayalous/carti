@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Merchant
+class Cashier
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class Merchant
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->hasRole('merchant'))
+        if ($request->user()->hasRole('cashier'))
             return $next($request);
 
 

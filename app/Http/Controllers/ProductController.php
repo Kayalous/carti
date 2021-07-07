@@ -18,10 +18,15 @@ class ProductController extends Controller
         $maxPrice = Product::all()->sortByDesc("price")->first()->price;
 
         $filters = (object)[
+
             'q' => (strlen($request->q) > 0) ? $request->q : '',
+
             'orderBy' => $request->orderBy ? $request->orderBy : 'desc',
+
             'min' => $request->min ? $request->min : 0,
+
             'max' => $request->max ? $request->max : $maxPrice
+
         ];
 
 
@@ -49,10 +54,11 @@ class ProductController extends Controller
 
     }
 
-    public function show($product_id){
+    public function show($product_id)
+    {
         return Inertia::render('Product', [
-            'product' => Product::findOrFail($product_id)
-        ]
+                'product' => Product::findOrFail($product_id)
+            ]
         );
     }
 

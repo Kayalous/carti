@@ -21,7 +21,7 @@
             <inertia-link :href="`/products/${product.id}`">
                 <img class="object-contain w-full h-48 mt-2 py-4"
                      :src="product.image"
-                     :alt="product.name" />
+                     :alt="product.name"/>
             </inertia-link>
             <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
                 <h1 class="text-lg font-bold text-white">{{ product.price.toFixed(2) }} EGP</h1>
@@ -81,6 +81,10 @@ export default {
     },
     methods: {
         addToCart() {
+            if (!this.$page.props.user) {
+                this.showAlert('error', 'Please login to add this product to your cart.')
+                return;
+            }
             this.form.post(route('cart.add'), {
                 onSuccess: (msg) => {
 

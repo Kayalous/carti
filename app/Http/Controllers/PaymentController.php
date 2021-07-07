@@ -66,7 +66,7 @@ class PaymentController extends Controller
 
                 $paymentIntent = PaymentIntent::where('payment_intent_id', $stripePaymentIntent->id)->firstOrFail();
 
-                $paymentIntent->completePurchase();
+                $paymentIntent->user->completePurchase();
 
 
                 return response(null, 200);
