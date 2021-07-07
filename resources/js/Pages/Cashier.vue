@@ -96,8 +96,8 @@ export default {
         }
     },
     mounted() {
-        let pusher = new Pusher('abf9f95fc1f7398a615d', {
-            cluster: 'eu',
+        let pusher = new Pusher(this.$page.props.pusherAppKey, {
+            cluster: this.$page.props.pusherCluster,
             authEndpoint: "/broadcasting/auth",
         });
 

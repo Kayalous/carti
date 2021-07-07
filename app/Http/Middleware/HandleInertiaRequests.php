@@ -44,7 +44,7 @@ class HandleInertiaRequests extends Middleware
             'auth.user.isAdmin' => fn() => $request->user()
                 ? $request->user()->hasRole('super-admin')
                 : null,
-            'pusherAppID' => env('PUSHER_APP_KEY'),
+            'pusherAppKey' => env('PUSHER_APP_KEY'),
             'pusherCluster' => env('PUSHER_APP_CLUSTER'),
 
         ]);

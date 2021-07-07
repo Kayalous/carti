@@ -35,9 +35,16 @@ class CashierController extends Controller
 
     public function cashierCheckoutEvent(Request $request)
     {
+        $user = User::find($request->cashier_id);
 
-        event(new CashierCheckoutEvent($request->user()->id, $request->cashier_id));
+        if ($user?->hasRole('cashier')) {
 
-        return response('Cashier notified.');
+            event(new CashierCheckoutEvent($request->user()->id, $request->cashier_id));
+
+            return response('Cashier notified.');
+
+        } else {
+            return response('Not a valid cashier.', 405);
+        }
     }
 }
