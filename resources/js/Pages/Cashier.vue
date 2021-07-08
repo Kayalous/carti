@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div v-else class="flex flex-col flex-grow w-full items-center justify-center px-2 pb-5">
-                    <img class="w-64 h-64 object-contain" :src="`/images/cashierQR-${$page.props.user.id}.png`"
+                    <img class="w-64 h-64 object-contain" :src="`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${$page.props.user.id}`"
                          alt="Cashier QR Code">
                     <h2 class=" max-w-lg mx-auto mt-6 text-3xl font-extrabold tracking-tighter text-center text-cool-gray-700 sm:text-4xl sm:leading-none">
                         {{

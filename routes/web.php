@@ -44,9 +44,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::middleware('cashier')->get('cashier', function (Request $request) {
 
-        \QrCode::size(500)
-            ->format('png')
-            ->generate($request->user()->id, public_path('images/cashierQR-' . $request->user()->id . '.png'));
+//        \QrCode::size(500)
+//            ->format('png')
+//            ->generate($request->user()->id, public_path('images/cashierQR-' . $request->user()->id . '.png'));
 
         return Inertia::render('Cashier');
 
