@@ -44,7 +44,9 @@ class CashierController extends Controller
             return response('Cashier notified.');
 
         } else {
+
             return response('Not a valid cashier.', 405);
+
         }
     }
 }

@@ -93,7 +93,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'زجاجة مياة البركة',
             'image' => '/images/barcode-1.jpg',
             'barcode' => '6223001930082',
-            'description' => 'Strictly for my Gamalawys',
+            'description' => 'زجاجة مياة البركة',
             'qty' => 10,
             'weight' => 1,
             'price' => 5,
@@ -104,10 +104,43 @@ class DatabaseSeeder extends Seeder
             'name' => 'رزمة ورق A4 فاخر',
             'image' => '/images/barcode-2.jpg',
             'barcode' => '3613630000028',
-            'description' => 'Strictly for my Gamalawys',
+            'description' => 'A4 80G COPY PAPER, 500 SHEETS PER PACK.',
             'qty' => 100,
             'weight' => 10,
             'price' => 50,
+            'merchant_id' => 2
+        ]);
+
+        Product::create([
+            'name' => 'BLUEBELL MALINDA SKIN CLEANSER GEL - 200 ML',
+            'image' => '/images/barcode-3.jpg',
+            'barcode' => '6224008235149',
+            'description' => 'INNOVATIVE COMPINATION OF PURIFIYING CLEANSING GEL FOR FACE AND BACK AND BODY GENTLY CLEANSES WITHOUT DRYING SKIN. PUIRIFIES AND DEEP CLEANSES PORES EFFECTIVELY ELIMINATES EXCESS SEBUM AND IMPURITIES. HAS KERATOLYTIC ACTION GENTLE SOAP-FREE CLEANSING BASE , PLEASENT FRAGRANCE 200 ML',
+            'qty' => 25,
+            'weight' => 1,
+            'price' => 150,
+            'merchant_id' => 2
+        ]);
+
+        Product::create([
+            'name' => 'جاراميسين - GARAMYCIN',
+            'image' => '/images/barcode-4.jpg',
+            'barcode' => '6221050130057',
+            'description' => 'جنتاميسين هو مضاد حيوي ينتمي إلى مجموعة من الأدوية تعرف باسم أمينوغليكوزيد (بالإنجليزية: Aminoglycoside)، ويستخدم لعلاج العديد من الالتهابات البكتيرية، مثل عدوى العين البكتيرية.',
+            'qty' => 250,
+            'weight' => 0.25,
+            'price' => 30,
+            'merchant_id' => 2
+        ]);
+
+        Product::create([
+            'name' => 'فول امريكانا مدمس 400 جرام',
+            'image' => '/images/barcode-5.jpg',
+            'barcode' => '032894022011',
+            'description' => 'علبة فول امريكانا مدمس',
+            'qty' => 1000,
+            'weight' => 0.5,
+            'price' => 12,
             'merchant_id' => 2
         ]);
 

@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56fdd77f-4863-4338-b6af-7ee1fe4e0507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Cashier.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Cashier.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CashierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CashierController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +181,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -238,6 +239,9 @@
       <workItem from="1625312256910" duration="21546000" />
       <workItem from="1625513625979" duration="1202000" />
       <workItem from="1625670171542" duration="17114000" />
+      <workItem from="1625844336835" duration="20000" />
+      <workItem from="1625860982642" duration="2671000" />
+      <workItem from="1625869576405" duration="318000" />
     </task>
     <servers />
   </component>
