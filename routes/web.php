@@ -32,6 +32,9 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    if (Auth::user()?->hasRole('cashier'))
+        return \redirect('/cashier');
+
     return Inertia::render('Welcome');
 })->name('landing');
 
@@ -97,6 +100,12 @@ Route::middleware(['auth:sanctum', 'cashier'])->name('cashier.')->prefix('cashie
     Route::post('summary', [CashierController::class, 'getSummary'])->name('summary');
 
     Route::post('checkout', [CashierController::class, 'checkoutCustomer'])->name('checkout');
+
+    Route::post('add', [CashierController::class, 'addItem'])->name('addItem');
+
+    Route::post('remove', [CashierController::class, 'removeItem'])->name('removeItem');
+
+    Route::post('edit', [CashierController::class, 'editItem'])->name('editItem');
 
 
 });
