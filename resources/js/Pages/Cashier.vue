@@ -13,6 +13,7 @@
                             <p class="text-xs sm:text-base text-base ">Quantity</p>
                             <p class="text-xs sm:text-base text-base  whitespace-nowrap">Unit price</p>
                             <p class="text-xs sm:text-base text-base ">Total</p>
+                            <p class="text-xs sm:text-base text-base ">Remove</p>
                         </div>
                         <div v-for="item in items" :key="item.id"
                              class="grid grid-cols-7 border-t py-2 sm:px-2 transition duration-200 ease-in-out rounded-md sm:hover:bg-gray-50 group">
@@ -41,7 +42,7 @@
                                 EGP
                             </p>
                             <JetDangerButton
-                                class="whitespace-nowrap transition duration-200 ease-in-out opacity-0 group-hover:opacity-100"
+                                class="whitespace-nowrap transition duration-200 ease-in-out opacity-0 group-hover:opacity-100 mr-auto"
                                 type="button"
                                 @click.native.prevent="removeItem(item.id)">
                                 <svg xmlns="http://www.w3.org/2000/svg"

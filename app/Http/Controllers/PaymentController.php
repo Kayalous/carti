@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\PaymentIntent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -12,13 +13,13 @@ use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
-    public function issuePaymentEvent()
-    {
+
+    private function setupPaymentEvent(User $user){
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $lineItems = [];
 
-        $items = Cart::getFormattedProducts(Auth::user()->carts);
+        $items = Cart::getFormattedProducts($user->carts);
 
 
         foreach ($items as $item) {
@@ -45,15 +46,36 @@ class PaymentController extends Controller
         ]);
 
 
-        PaymentIntent::create([
-            'user_id' => Auth::user()->id,
+         PaymentIntent::create([
+            'user_id' => $user->id,
             'payment_intent_id' => $session->payment_intent,
             'payment_session_id' => $session->id
         ]);
 
+         return $session;
+    }
+
+    public function issuePaymentEvent(Request $request)
+    {
+
+        $session = $this->setupPaymentEvent($request->user());
+
         return redirect($session->url);
 
     }
+
+    public function apiIssuePaymentEvent(Request $request)
+    {
+
+        $session = $this->setupPaymentEvent($request->user());
+
+        return response()->json([
+            'url' => $session->url
+        ]);
+
+    }
+
+
 
 
     public function stripeCallback(Request $request)

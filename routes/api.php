@@ -30,6 +30,8 @@ Route::middleware('auth:sanctum')->name('api.cart.')->prefix('cart')->group(func
 
     Route::post('checkout/cashier', [CashierController::class, 'cashierCheckoutEvent'])->name('cashier.checkout');
 
+    Route::post('checkout/stripe', [PaymentController::class, 'apiIssuePaymentEvent'])->name('stripe.checkout');
+
     Route::post('summary', [CartController::class, 'apiGetSummary'])->name('summary');
 
     Route::post('update', [CartController::class, 'apiUpdateCart'])->name('update');
