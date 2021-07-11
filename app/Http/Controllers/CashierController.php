@@ -118,7 +118,7 @@ class CashierController extends Controller
 
             return response()->json([
                 'message' => 'Not a valid cashier.'
-            ]);
+            ], 405);
 
 
         }
