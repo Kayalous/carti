@@ -40,6 +40,7 @@ class Cart extends Model
         return $this->belongsTo(User::class)->withTimestamps();
     }
 
+    // Add a product to the current cart, default qty is 1
     public function add($product_id, $qty = 1)
     {
 
@@ -56,6 +57,7 @@ class Cart extends Model
         return $carted;
     }
 
+    // Remove a product from the current cart
     public function remove($product_id, $qty = 1)
     {
         $carted = $this->products()->find($product_id);
@@ -70,6 +72,7 @@ class Cart extends Model
         return $carted;
     }
 
+    // Get total of current cart
     public function total()
     {
         return $this->products->sum(function($item){
@@ -106,6 +109,7 @@ class Cart extends Model
         return $items;
     }
 
+    // Empty cart of all products
     public static function zeroCarts($carts)
     {
         foreach ($carts as $cart)

@@ -110,11 +110,16 @@ class CashierController extends Controller
 
             event(new CashierCheckoutEvent($request->user()->id, $request->cashier_id));
 
-            return response('Cashier notified.');
+            return response()->json([
+                'message' => 'Cashier notified.'
+            ]);
 
         } else {
 
-            return response('Not a valid cashier.', 405);
+            return response()->json([
+                'message' => 'Not a valid cashier.'
+            ]);
+
 
         }
     }

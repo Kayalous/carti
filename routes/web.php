@@ -42,6 +42,14 @@ Route::get('products', [ProductController::class, 'showAllProducts'])->name('pro
 
 Route::get('products/{id}', [ProductController::class, 'show'])->name('product.show');
 
+Route::get('/test', function (){
+    $purchases = \App\Models\Purchase::all()
+        ->groupBy('transaction_id', true);
+
+    dd( $purchases );
+
+});
+
 Route::middleware(['auth:sanctum'])->group(function () {
 
 

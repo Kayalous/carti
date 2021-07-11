@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="56fdd77f-4863-4338-b6af-7ee1fe4e0507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Cashier.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Cashier.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Purchase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Purchase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Pages/Auth/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Pages/Auth/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +244,8 @@
       <workItem from="1625670171542" duration="17114000" />
       <workItem from="1625844336835" duration="20000" />
       <workItem from="1625860982642" duration="2671000" />
-      <workItem from="1625869576405" duration="8368000" />
+      <workItem from="1625869576405" duration="10724000" />
+      <workItem from="1625953939368" duration="5757000" />
     </task>
     <servers />
   </component>

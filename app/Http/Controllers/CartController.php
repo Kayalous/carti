@@ -37,6 +37,7 @@ class CartController extends Controller
     {
 
             $product = Product::where('barcode', $request->barcode)->first();
+
             if ($product){
 
                 $request->user()->carts[0]->add($product->id, $request->qty);
@@ -47,8 +48,10 @@ class CartController extends Controller
                 ]);
 
             }
+
             else
                 return response('Product not found', 404);
+
     }
 
     public function apiRemoveProductFromCartWithBarcode(Request $request)

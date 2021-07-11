@@ -7,6 +7,10 @@
                 <jet-authentication-card-logo/>
             </template>
 
+            <template #title>
+                Register
+            </template>
+
             <jet-validation-errors class="mb-4"/>
 
             <form @submit.prevent="submit">
