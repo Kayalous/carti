@@ -54,7 +54,7 @@ class UserProfileController extends Controller
         ])->save();
 
         return response()->json([
-            'message' => 'Password updated successfully.'
+            'message' => 'Password updated successfully!'
         ]);
     }
 }

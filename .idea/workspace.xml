@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56fdd77f-4863-4338-b6af-7ee1fe4e0507" name="Default Changelist" comment="" />
+    <list default="true" id="56fdd77f-4863-4338-b6af-7ee1fe4e0507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,7 +179,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -185,11 +187,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aelka\Documents\Web\laravel-development\carti\public" />
       <recent name="C:\Users\aelka\Documents\Web\laravel-development\carti\public\images" />
       <recent name="C:\Users\aelka\Documents\Web\laravel-development\carti\resources\images" />
       <recent name="C:\Users\aelka\Documents\Web\laravel-development\carti\resources\views\vendor" />
       <recent name="C:\Users\aelka\Documents\Web\laravel-development\carti\app\Http" />
-      <recent name="C:\Users\aelka\Documents\Web\laravel-development\carti\app\Http\Middleware" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\aelka\Documents\Web\laravel-development\carti\public\images" />
@@ -241,6 +243,7 @@
       <workItem from="1625953939368" duration="5757000" />
       <workItem from="1626014773676" duration="780000" />
       <workItem from="1626041302059" duration="10857000" />
+      <workItem from="1626113109631" duration="1354000" />
     </task>
     <servers />
   </component>
