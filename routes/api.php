@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\TokenAuthController;
+use App\Http\Controllers\Api\UserProfileController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CashierController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -59,8 +61,20 @@ Route::prefix('auth')->group(function () {
 
 });
 
+Route::middleware('auth:sanctum')->prefix('user/profile')->group(function () {
+
+    Route::post('/update/password', [UserProfileController::class, 'updatePassword']);
+
+    Route::post('/update/information', [UserProfileController::class, 'updateInformation']);
+
+});
+
+
+
 Route::post('payment/success', [PaymentController::class, 'stripeCallback']);
 
 Route::middleware('auth:sanctum')->post('/user', function (Request $request) {
     return $request->user()->toJson();
 });
+
+Route::middleware('auth:sanctum')->post('/user/purchases', [PurchaseController::class, 'apiGetFormattedUserPurchases']);

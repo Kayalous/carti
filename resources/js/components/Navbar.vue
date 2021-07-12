@@ -55,7 +55,7 @@
                                 >
                                     <img
                                         class="object-cover w-8 h-8 rounded-full"
-                                        :src="$page.props.user.profile_photo_url"
+                                        :src="$page.props.user.profile_photo_path || $page.props.user.profile_photo_url"
                                         :alt="$page.props.user.name"
                                     />
                                 </button>
