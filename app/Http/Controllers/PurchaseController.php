@@ -18,7 +18,7 @@ class PurchaseController extends Controller
         );
 
         return response()->json(
-            $newPurchases
+            ['history' => $newPurchases]
         );
     }
 
